@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SHIFTED</title>
+<style>
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(180deg, #0d0735, #1a0a55, #2b0b75);
+  color: #eee;
+  overflow-x: hidden;
+}
+
+/* HERO SECTION */
+header {
+  position: relative;
+  height: 90vh;
+  background: 
+    linear-gradient(rgba(15, 5, 40, 0.7), rgba(20, 5, 60, 0.8)),
+    url("https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=1500&q=80") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+header h1 {
+  font-size: 90px;
+  background: linear-gradient(90deg, #b06cff, #e55cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: 6px;
+}
+
+header p {
+  font-size: 22px;
+  max-width: 600px;
+  margin: 20px auto;
+  color: #dcd3ff;
+}
+
+header button {
+  background: linear-gradient(90deg, #b06cff, #e55cff);
+  border: none;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(160, 60, 255, 0.4);
+  transition: all 0.3s ease;
+}
+header button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* SECTIONS */
+section {
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 40px;
+  margin: 60px auto;
+  width: 90%;
+  background: linear-gradient(180deg, #14094a, #1f0f61, #2a1677);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+section h2 {
+  font-size: 45px;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, #b06cff, #e55cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Product cards */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.product {
+  background: rgba(30, 20, 60, 0.95);
+  border-radius: 25px;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  color: #eee;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+.product:hover {
+  transform: scale(1.03);
+}
+.product img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+}
+.price {
+  font-size: 20px;
+  color: #e55cff;
+  margin: 10px 0;
+}
+button {
+  background: linear-gradient(90deg, #b06cff, #e55cff);
+  border: none;
+  padding: 12px 25px;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  transform: scale(1.05);
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.popup-content {
+  background: #1c124a;
+  border-radius: 25px;
+  padding: 40px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+.popup-content h3 {
+  margin-top: 0;
+  color: #b06cff;
+}
+.popup input, .popup textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+.popup button {
+  width: 100%;
+  background: linear-gradient(90deg, #b06cff, #e55cff);
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+}
+.close {
+  position: absolute;
+  top: 15px; right: 25px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SHIFTED</h1>
+  <p>Streetwear meets creativity — build your style with custom caps and bottles.</p>
+  <button onclick="scrollToProducts()">Shop Now</button>
+</header>
+
+<section id="caps">
+  <h2>Custom Caps</h2>
+  <div class="container">
+    <div class="product">
+      <img src="https://i.pinimg.com/originals/8d/9b/f0/8d9bf0c44b44f8b8e1bdd628bd5265c8.jpg" alt="Black Cap">
+      <h3>Black Cap</h3>
+      <p class="old-price">299 EGP</p>
+      <p class="price">249 EGP</p>
+      <button onclick="openPopup('Black Cap')">Preorder</button>
+    </div>
+    <div class="product">
+      <img src="https://californiadistributing.com/wp-content/uploads/2021/01/s-l1600-20-1.jpg" alt="Navy Cap">
+      <h3>Navy Cap</h3>
+      <p class="old-price">299 EGP</p>
+      <p class="price">249 EGP</p>
+      <button onclick="openPopup('Navy Cap')">Preorder</button>
+    </div>
+    <div class="product">
+      <img src="https://m.media-amazon.com/images/I/81qgAlSxbBL._AC_UL960_QL65_.jpg" alt="Green Cap">
+      <h3>Green Cap</h3>
+      <p class="old-price">299 EGP</p>
+      <p class="price">249 EGP</p>
+      <button onclick="openPopup('Green Cap')">Preorder</button>
+    </div>
+  </div>
+</section>
+
+<section id="bottles">
+  <h2>Smart Bottles</h2>
+  <div class="container">
+    <div class="product">
+      <img src="https://static-01.daraz.pk/p/a57848c1bcc4473a04610d2aab929f3b.jpg" alt="Smart Bottle">
+      <h3>Temperature Bottle</h3>
+      <p class="old-price">439 EGP</p>
+      <p class="price">399 EGP</p>
+      <button onclick="openPopup('Smart Bottle')">Preorder</button>
+    </div>
+  </div>
+</section>
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <h3>Preorder Request</h3>
+    <p id="product-name"></p>
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="text" id="email" placeholder="Your Email" required />
+    <textarea id="description" placeholder="Describe how you want your logo to look (color, text, etc.)"></textarea>
+    <button onclick="sendOrder()">Send Order (COD)</button>
+  </div>
+</div>
+
+<script>
+function scrollToProducts() {
+  document.getElementById("caps").scrollIntoView({ behavior: "smooth" });
+}
+function openPopup(product) {
+  document.getElementById("popup").style.display = "flex";
+  document.getElementById("product-name").textContent = "Product: " + product;
+}
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+function sendOrder() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const description = document.getElementById("description").value;
+  const product = document.getElementById("product-name").textContent;
+  if (!name || !email) {
+    alert("Please fill all fields.");
+    return;
+  }
+  alert(`Thank you, ${name}! Your preorder for ${product} has been sent.`);
+  closePopup();
+}
+</script>
+</body>
+</html>
